@@ -1,0 +1,7 @@
+.post img {
+    width: 40px;
+    border-radius: 50%;
+}
+.post_text {
+    display: inline-block;
+}

@@ -1,7 +1,8 @@
 import React from 'react';
+import style from './Nav.module.css'
 
 function Navbar() {
-    return ( <nav className='nav'>
+    return ( <nav className={style.nav}>
         <div>
             <a>Profile</a>
         </div>
