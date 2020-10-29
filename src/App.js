@@ -9,23 +9,23 @@ import News from "./News/News";
 import Music from "./Music/Music";
 import Settings from "./Settings/Settings";
 import {BrowserRouter, Route} from "react-router-dom";
+import state from "./redux/state";
 
 
+function App(props) {
 
 
-
-function App() {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar/>
+                <Navbar sidebar={state.sidebar}/>
                 <div className='app-wrapper--content'>
-                    <Route path='/profile' component={Profile}/>
-                    <Route path='/dialogs' component={Dialogs}/>
-                    <Route path='/news' component={News}/>
-                    <Route path='/music' component={Music}/>
-                    <Route path='/settings' component={Settings}/>
+                    <Route path='/profile' render={ () => <Profile  postData={state.profilePage.postData}/>}/>
+                    <Route path='/dialogs' render={ () => <Dialogs messageData={state.dialogsPage.messageData} dialogsData={state.dialogsPage.dialogsData}/>}/>
+                    <Route path='/news' render={ () => <News/>}/>
+                    <Route path='/music' render={ () => <Music/>}/>
+                    <Route path='/settings' render={ () => <Settings/>}/>
                 </div>
             </div>
         </BrowserRouter>
