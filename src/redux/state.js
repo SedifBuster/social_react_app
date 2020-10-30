@@ -1,3 +1,6 @@
+let rerenderEntireTree = () => {
+    console.log('state is proper changed')
+}
 
 let state = {
     profilePage: {
@@ -6,7 +9,8 @@ let state = {
             {id: 2, message: 'Petr', age: '15', likecount: 13},
             {id: 3, message: 'Ivan', age: '23', likecount: 14},
             {id: 4, message: 'Eshe odin Ivan', age: '14', likecount: 24},
-        ]
+        ],
+        newPostText: 'it-kamasutra'
     },
     dialogsPage: {
         dialogsData: [
@@ -25,7 +29,8 @@ let state = {
             {id: 3, message: 'Letsgo dota'},
             {id: 4, message: 'fast'},
             {id: 5, message: 'faster'},
-        ]
+        ],
+        newMessageText: 'it-incubator'
     },
     sidebar: {
         friends: [
@@ -35,5 +40,42 @@ let state = {
         ]
     }
 }
+
+export let addPost = () => {
+    let newPost = {
+        id: 5,
+        message: state.profilePage.newPostText,
+        likecount: 0
+    }
+    state.profilePage.postData.push(newPost)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree(state)
+}
+export let updatePostText = (newText) => {
+
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
+
+export let addMessage = () => {
+    let newMessage = {
+        id: 5,
+        message: state.dialogsPage.newMessageText}
+
+    state.dialogsPage.messageData.push(newMessage)
+    state.dialogsPage.newMessageText = ''
+    rerenderEntireTree(state)
+}
+
+export let updateMessageText = (newText) => {
+
+    state.dialogsPage.newMessageText = newText
+    rerenderEntireTree(state)
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer
+}
+
 
 export default state
