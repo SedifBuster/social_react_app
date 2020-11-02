@@ -9,7 +9,7 @@ import News from "./News/News";
 import Music from "./Music/Music";
 import Settings from "./Settings/Settings";
 import {BrowserRouter, Route} from "react-router-dom";
-import state from "./redux/state";
+
 
 
 function App(props) {
@@ -19,17 +19,15 @@ function App(props) {
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar sidebar={state.sidebar}/>
+                <Navbar sidebar={props.state.sidebar}/>
                 <div className='app-wrapper--content'>
-                    <Route path='/profile' render={() => <Profile profilePage={state.profilePage}
-                                                                  addPost={props.addPost}
-                                                                  updatePostText={props.updatePostText}
+                    <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage}
+                                                                  dispatch={props.dispatch}
                     />}/>
-                    <Route path='/dialogs' render={() => <Dialogs messageData={state.dialogsPage.messageData}
-                                                                  dialogsData={state.dialogsPage.dialogsData}
-                                                                  addMessage={props.addMessage}
-                                                                  updateMessageText={props.updateMessageText}
-                                                                  newMessageText={state.dialogsPage.newMessageText}
+                    <Route path='/dialogs' render={() => <Dialogs messageData={props.state.dialogsPage.messageData}
+                                                                  dialogsData={props.state.dialogsPage.dialogsData}
+                                                                  newMessageText={props.state.dialogsPage.newMessageText}
+                                                                  dispatch={props.dispatch}
                     />}
                     />
                     <Route path='/news' render={() => <News/>}/>

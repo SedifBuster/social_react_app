@@ -5,6 +5,7 @@ import SidebarFriends from "./SidebarFriends/SidebarFriends";
 import Dialog from "../Dialogs/Dialogsitem/Dialog";
 
 function Navbar(props) {
+    debugger
 
     let sidebarElements = props.sidebar.friends.map((friends) => {
         return (<SidebarFriends name={friends.name} img={friends.img}/>)

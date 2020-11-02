@@ -2,6 +2,18 @@ import React from 'react';
 import style from './Myposts.module.css'
 import Post from "./Post/Post";
 
+let addPostActionCreator = () => {
+    return {
+        type: 'ADD-POST'
+    }
+}
+let updatePostTextActioncreator = (text) => {
+    return {
+        type: 'UPDATE-POST-TEXT',
+        newText: text
+    }
+}
+
 function Myposts(props) {
 
 
@@ -12,13 +24,15 @@ function Myposts(props) {
     let newPostElement = React.createRef()
 
     let addPost = () => {
-        props.addPost()
-
+       // props.addPost()
+        props.dispatch( addPostActionCreator)
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value
-        props.updatePostText(text)
+       // props.updatePostText(text)
+        let action = updatePostTextActioncreator(text)
+        props.dispatch( action)
     }
 
 

@@ -10,8 +10,8 @@ function Profile(props) {
         <ProfileInfo/>
         <Myposts id={props.profilePage.postData.id}
                  newPostText={props.profilePage.newPostText}
-                 postData={props.profilePage.postData} addPost={props.addPost}
-                 updatePostText={props.updatePostText}
+                 postData={props.profilePage.postData}
+                 dispatch={props.dispatch}
 
         />
 
