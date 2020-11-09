@@ -1,13 +1,17 @@
+body {
+  background-color: rgba(46, 134, 222,0.5);
+}
 .app-wrapper {
   display: grid;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 100px 1fr;
   grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
+  grid-gap: 1px;
   grid-template-areas:
 "h h"
 "n c";
-  width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
+
 }
 
 .app-wrapper--content {

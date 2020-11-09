@@ -1,8 +1,15 @@
 .header {
     grid-area: h;
-    background-color: green;
+    background-color: rgba(84, 160, 255,1);
+    border: 2px solid rgba(46, 134, 222,0.3);
+    border-radius: 3px;
 }
 
 .header img {
-    width: 20px;
+
+}
+
+.logo {
+    max-width: 150px;
+    margin: 5px;
 }

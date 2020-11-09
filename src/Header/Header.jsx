@@ -3,7 +3,7 @@ import style from './Header.module.css'
 
 function Header() {
     return (<header className={style.header}>
-        <img src= 'https://www.free-money.tv/wp-content/uploads/2014/12/company-name-vector-logo1.jpg' alt=''/>
+        <img src= 'logo.png' alt='Logo' className={style.logo}/>
     </header>)
 }
 

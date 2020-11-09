@@ -3,28 +3,29 @@ import style from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import Dialog from "./Dialogsitem/Dialog";
 import Message from "./Message/Message";
+import {sendMessageCreator, updateNewMessageTextCreator} from "../redux/dialogs-reducer";
 
 
 function Dialogs(props) {
+    let state = props.dialogsPage
 
-
-    let dialogsElemements = props.dialogsData.map((dialog) => {
+    let dialogsElemements = state.dialogsData.map((dialog) => {
         return (<Dialog name={dialog.name} id={dialog.id}/>)
     })
 
-    let messagesElements = props.messageData.map((message) => {
+    let messagesElements = state.messageData.map((message) => {
         return (<Message message={message.message}/>)
     })
 
     let newPostElement = React.createRef()
 
     let addMessage = () => {
-        props.dispatch({ type: 'ADD-MESSAGE' })
+        props.sendMessage()
     }
 
     let onMessageChange = () => {
         let text = newPostElement.current.value
-        props.dispatch({ type: 'UPDATE-MESSAGE-TEXT', newText: text })
+        props.UpdateNewMessageText(text)
     }
 
 
@@ -36,7 +37,7 @@ function Dialogs(props) {
             <div className={style.messages}>
                 {messagesElements}
             </div>
-            <textarea ref={newPostElement} onChange={onMessageChange} value={props.newMessageText}/>
+            <textarea ref={newPostElement} onChange={onMessageChange} value={state.newMessageText}/>
             <button onClick={addMessage}>Add message</button>
         </div>
     )
