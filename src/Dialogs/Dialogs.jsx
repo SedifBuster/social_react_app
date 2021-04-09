@@ -10,11 +10,11 @@ function Dialogs(props) {
     let state = props.dialogsPage
 
     let dialogsElemements = state.dialogsData.map((dialog) => {
-        return (<Dialog name={dialog.name} id={dialog.id}/>)
+        return (<Dialog name={dialog.name} key={dialog.id} id={dialog.id}/>)
     })
 
     let messagesElements = state.messageData.map((message) => {
-        return (<Message message={message.message}/>)
+        return (<Message message={message.message} key={message.id}/>)
     })
 
     let newPostElement = React.createRef()

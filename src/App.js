@@ -9,20 +9,23 @@ import Music from "./Music/Music";
 import Settings from "./Settings/Settings";
 import {BrowserRouter, Route} from "react-router-dom";
 import DialogsContainer from "./Dialogs/DialogsContainer";
+import UsersContainer from "./Users/UsersContainer";
 
 
+//sidebar={props.state.sidebar} сайдбар в навбар 
 
 function App(props) {
-debugger
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar sidebar={props.state.sidebar}/>
+                <Navbar />
                 <div className='app-wrapper--content'>
                     <Route path='/profile' render={() => <Profile/>}
                     />
                     <Route path='/dialogs' render={() => <DialogsContainer/>}
+                    />
+                    <Route path='/users' render={() => <UsersContainer/>}
                     />
                     <Route path='/news' render={() => <News/>}/>
                     <Route path='/music' render={() => <Music/>}/>

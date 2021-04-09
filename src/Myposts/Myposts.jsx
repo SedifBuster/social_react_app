@@ -6,7 +6,7 @@ import Post from "./Post/Post";
 function Myposts(props) {
 
     let postElements = props.profilePage.postData.map((post) => {
-        return (<Post message={post.message} age={post.age} like={post.likecount + ' like'}/>)
+        return (<Post message={post.message} key={post.id} age={post.age} like={post.likecount + ' like'}/>)
     })
     let newPostElement = React.createRef()
     let onAddPost = () => { props.addPost() }

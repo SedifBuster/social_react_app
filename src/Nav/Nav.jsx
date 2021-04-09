@@ -6,9 +6,10 @@ import Dialog from "../Dialogs/Dialogsitem/Dialog";
 
 function Navbar(props) {
 
-    let sidebarElements = props.sidebar.friends.map((friends) => {
-        return (<SidebarFriends name={friends.name} img={friends.img}/>)
-    })
+    //let sidebarElements = props.sidebar.friends.map((friends) => {
+   //     return (<SidebarFriends name={friends.name} img={friends.img}/>)
+    //})
+    // {sidebarElements}
 
     return (
         <nav className={style.nav}>
@@ -17,6 +18,9 @@ function Navbar(props) {
             </div>
             <div className={style.item}>
                 <NavLink to='/dialogs' activeClassName={style.active}>Message</NavLink>
+            </div>
+            <div className={style.item}>
+                <NavLink to='/users' activeClassName={style.active}>Users</NavLink>
             </div>
             <div className={style.item}>
                 <NavLink to='/news' activeClassName={style.active}>News</NavLink>
@@ -28,7 +32,7 @@ function Navbar(props) {
                 <NavLink to='/settings' activeClassName={style.active}>Settings</NavLink>
             </div>
             <div className={style.friends}>
-                {sidebarElements}
+
             </div>
         </nav>)
 
