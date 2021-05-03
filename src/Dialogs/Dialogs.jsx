@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import Dialog from "./Dialogsitem/Dialog";
 import Message from "./Message/Message";
 import {sendMessageCreator, updateNewMessageTextCreator} from "../redux/dialogs-reducer";
@@ -28,6 +28,7 @@ function Dialogs(props) {
         props.UpdateNewMessageText(text)
     }
 
+    if (!props.isAuth) return <Redirect to={"/login"}/>
 
     return (
         <div className={style.dialogs}>

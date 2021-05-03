@@ -9,6 +9,7 @@ import DialogsContainer from "./Dialogs/DialogsContainer";
 import UsersContainer from "./Users/UsersContainer";
 import ProfileContainer from "./Profile/ProfileContainer";
 import HeaderContainer from "./Header/HeaderContainer";
+import LoginPage from "./Login/Login";
 
 
 //sidebar={props.state.sidebar} сайдбар в навбар 
@@ -25,6 +26,8 @@ function App(props) {
                     <Route path='/dialogs' render={() => <DialogsContainer/>}
                     />
                     <Route path='/users' render={() => <UsersContainer/>}
+                    />
+                    <Route path='/login' render={() => <LoginPage/>}
                     />
                     <Route path='/news' render={() => <News/>}/>
                     <Route path='/music' render={() => <Music/>}/>
