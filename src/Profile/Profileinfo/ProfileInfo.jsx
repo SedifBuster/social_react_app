@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './ProfileInfo.module.css'
 import Preloader from "../../common/preloader/Preloader";
+import ProfileStatus from "./ProfileStatus"
 
 
 function ProfileInfo(props) {
@@ -15,6 +16,7 @@ function ProfileInfo(props) {
             <img src={props.profile.photos.large}/>
             <img src='https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg' alt='' className={style.avatar}/>
             <p>{props.profile.fullName}</p>
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             <div>
                 <p>Ищу ли я работу {props.profile.lookingForAJob}</p>
                 <p>{props.profile.lookingForAJobDescription}</p>
