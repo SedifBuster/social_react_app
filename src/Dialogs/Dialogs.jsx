@@ -1,9 +1,13 @@
 import React from 'react';
 import style from './Dialogs.module.css'
-import {NavLink, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import Dialog from "./Dialogsitem/Dialog";
 import Message from "./Message/Message";
-import {sendMessageCreator, updateNewMessageTextCreator} from "../redux/dialogs-reducer";
+import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../utils/validators/validators";
+import {TextArea} from "../common/FormsControls/FormsControls";
+
+const maxLength10 = maxLengthCreator(10)
 
 
 function Dialogs(props) {
@@ -17,18 +21,11 @@ function Dialogs(props) {
         return (<Message message={message.message} key={message.id}/>)
     })
 
-    let newPostElement = React.createRef()
-
-    let addMessage = () => {
-        props.sendMessage()
-    }
-
-    let onMessageChange = () => {
-        let text = newPostElement.current.value
-        props.UpdateNewMessageText(text)
-    }
-
     if (!props.isAuth) return <Redirect to={"/login"}/>
+
+    let addNewMessage = (values) => {
+        props.sendMessage(values.newPostElement)
+    }
 
     return (
         <div className={style.dialogs}>
@@ -38,10 +35,21 @@ function Dialogs(props) {
             <div className={style.messages}>
                 {messagesElements}
             </div>
-            <textarea ref={newPostElement} onChange={onMessageChange} value={state.newMessageText}/>
-            <button onClick={addMessage}>Add message</button>
+            <AddMessageFormRedux onSubmit={addNewMessage}/>
         </div>
     )
 }
+
+const AddMessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field component={TextArea} name={"newPostElement"} placeholder={"Enter your message"}
+                   validate={[required, maxLength10]}/>
+            <button>Add message</button>
+        </form>
+    )
+}
+
+const AddMessageFormRedux = reduxForm({form: "dialogAddMessageForm"})(AddMessageForm)
 
 export default Dialogs
